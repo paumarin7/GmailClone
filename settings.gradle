@@ -1,0 +1,2 @@
+include ':GmailClone-app'
+rootProject.name = "TwitterClone"
