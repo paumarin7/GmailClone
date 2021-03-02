@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("cat.itb.twitterclone", appContext.getPackageName());
+        assertEquals("cat.itb.gmailclone", appContext.getPackageName());
     }
 }

@@ -9,5 +9,20 @@
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
+    <style name="email_origin">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="email_subject">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="email_body">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/readColor</item>
+    </style>
+    <style name="interfaceItem">
+        <item name="color">@color/selectedColor</item>
+        <item name="tint">@color/selectedColor</item>
+        <item name="backgroundTint">@color/interfaceColor</item>
+    </style>
 
 </resources>
