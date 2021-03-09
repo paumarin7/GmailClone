@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mailButton"
+        android:icon="@drawable/ic_baseline_email_24"
+        android:title="@string/mail"
+        android:enabled="true"
+
+        />
+
+    <item
+        android:id="@+id/meetButton"
+        android:icon="@drawable/ic_baseline_meeting_room_24"
+        android:title="@string/meet"
+        android:enabled="true"
+        />
+
+</menu>

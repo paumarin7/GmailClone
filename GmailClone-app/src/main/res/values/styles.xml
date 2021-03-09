@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/interfaceColor</item>
         <item name="colorPrimaryDark">@color/background</item>
         <item name="colorAccent">@color/unreadColor</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/launch_screen</item>
@@ -23,7 +24,16 @@
         <item name="color">@color/selectedColor</item>
         <item name="tint">@color/selectedColor</item>
         <item name="backgroundTint">@color/interfaceColor</item>
-        <item name="android:textColor">@color/selectedColor</item>
+        <item name="android:textColor">@color/interfaceColor</item>
+    </style>
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/interfaceColor</item>
+        <item name="colorOnPrimary">@color/selectedColor</item>
+        <item name="rippleColor">@color/readColor</item>
     </style>
 
 </resources>

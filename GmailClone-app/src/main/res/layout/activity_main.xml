@@ -5,15 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:id="@+id/topAppBar"
+    android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
@@ -36,11 +36,11 @@
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/placeHolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/topAppBar"
         tools:context=".MainActivity">
 
 
@@ -64,17 +64,29 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="20dp"
+        android:layout_above="@+id/bottomAppBar"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_above="@+id/bottomAppBar"
         android:src="@drawable/ic_baseline_create_24" />
 
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavMainMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/interfaceColor"
+            app:itemIconTint="@color/selectedColor"
+            app:itemTextColor="@color/selectedColor"
+            app:menu="@menu/bottom_app_bar"
+            />
 
-
-
-
-
+    </LinearLayout>
 
 
 </RelativeLayout>
