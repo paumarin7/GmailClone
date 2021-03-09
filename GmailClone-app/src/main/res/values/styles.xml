@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/interfaceColor</item>
         <item name="colorPrimaryDark">@color/background</item>
@@ -23,6 +23,7 @@
         <item name="color">@color/selectedColor</item>
         <item name="tint">@color/selectedColor</item>
         <item name="backgroundTint">@color/interfaceColor</item>
+        <item name="android:textColor">@color/selectedColor</item>
     </style>
 
 </resources>

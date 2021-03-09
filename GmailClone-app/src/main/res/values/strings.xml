@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GoogleClone</string>
+    <string name="mail_content_description">Mail Content Description</string>
+    <string name="meet_content_description">Meet Content Description</string>
+    <string name="mail">Mail</string>
+    <string name="meet">Meet</string>
+    <string name="profile">Profile</string>
+    <string name="search_in_emails">Search in emails</string>
 </resources>

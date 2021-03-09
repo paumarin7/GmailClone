@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp">
+
+    <ImageView
+        android:id="@+id/imageItem"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/originItem"
+        android:layout_toEndOf="@+id/imageItem"
+        android:layout_toRightOf="@+id/imageItem" />
+
+    <TextView
+        android:id="@+id/titleItem"
+        android:layout_below="@+id/originItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageItem"
+        android:layout_toEndOf="@id/imageItem" />
+    <TextView
+        android:id="@+id/descriptionItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageItem"
+        android:layout_below="@+id/titleItem"
+        android:layout_toEndOf="@id/imageItem" />
+    <TextView
+        android:id="@+id/dateItem"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:layout_alignParentRight="true"
+        android:id="@+id/starItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateItem"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

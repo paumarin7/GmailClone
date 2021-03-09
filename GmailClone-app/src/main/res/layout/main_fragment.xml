@@ -7,19 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/writeEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/ic_baseline_create_24"
-        style="@style/interfaceItem"
-         />
+
 
 
 </RelativeLayout>
