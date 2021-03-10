@@ -3,7 +3,9 @@
     <item android:drawable="@color/interfaceColor" />
     <!-- background color -->
     <item>
-        <bitmap android:gravity="center" android:src="@drawable/google_logo" />
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/google_logo" />
         <!-- centered logo -->
     </item>
 </layer-list>

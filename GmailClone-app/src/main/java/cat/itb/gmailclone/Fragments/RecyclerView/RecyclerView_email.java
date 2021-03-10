@@ -9,13 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.zip.Inflater;
-
-import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.Model.EmailViewModel;
 import cat.itb.gmailclone.R;
 
@@ -24,7 +20,6 @@ import static cat.itb.gmailclone.Model.EmailViewModel.emails;
 public class RecyclerView_email extends Fragment {
     RecyclerView recyclerView;
     EmailViewModel emailModel;
-
 
 
     @Override
@@ -36,8 +31,8 @@ public class RecyclerView_email extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.gmail , container, false);
-        emailModel =  new ViewModelProvider(this).get(EmailViewModel.class);
+        View v = inflater.inflate(R.layout.gmail, container, false);
+        emailModel = new ViewModelProvider(this).get(EmailViewModel.class);
         recyclerView = v.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         EmailAdapter adapter = new EmailAdapter(emails);

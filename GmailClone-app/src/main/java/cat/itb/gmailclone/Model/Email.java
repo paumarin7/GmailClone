@@ -9,35 +9,17 @@ public class Email {
     String description;
     Date date;
     boolean star;
+    boolean read;
     String[] inboxes;
 
-    public Email(int image, String origin, String title, String description, Date date, boolean star, String[] inboxes) {
+    public Email(int image, String origin, String title, String description, Date date, boolean star, boolean read, String[] inboxes) {
         this.image = image;
         this.origin = origin;
         this.title = title;
         this.description = description;
         this.date = date;
         this.star = star;
-        this.inboxes = inboxes;
-    }
-
-    public String getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(String origin) {
-        this.origin = origin;
-    }
-
-    public boolean isStar() {
-        return star;
-    }
-
-    public String[] getInboxes() {
-        return inboxes;
-    }
-
-    public void setInboxes(String[] inboxes) {
+        this.read = read;
         this.inboxes = inboxes;
     }
 
@@ -47,6 +29,14 @@ public class Email {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
     public String getTitle() {
@@ -73,56 +63,27 @@ public class Email {
         this.date = date;
     }
 
+    public boolean isStar() {
+        return star;
+    }
+
     public void setStar(boolean star) {
         this.star = star;
     }
 
-    @Override
-    public String toString() {
-        int day = date.getDay();
-        long month = date.getTime();
-        String realMonth = "Wrong Month";
-        /*
-        switch (month) {
-            case 1:
-                realMonth = "jan.";
-                break;
-            case 2:
-                realMonth = "feb.";
-                break;
-            case 3:
-                realMonth = "mar.";
-                break;
-            case 4:
-                realMonth = "abr.";
-                break;
-            case 5:
-                realMonth = "may.";
-                break;
-            case 6:
-                realMonth = "jun.";
-                break;
-            case 7:
-                realMonth = "jul.";
-                break;
-            case 8:
-                realMonth = "ago.";
-                break;
-            case 9:
-                realMonth = "sep.";
-                break;
-            case 10:
-                realMonth = "oct.";
-                break;
-            case 11:
-                realMonth = "nov.";
-                break;
-            case 12:
-                realMonth = "dic.";
-                break;
-        }
+    public boolean isRead() {
+        return read;
+    }
 
-         */
-        return "" + day + " " + month;
+    public void setRead(boolean read) {
+        this.read = read;
+    }
+
+    public String[] getInboxes() {
+        return inboxes;
+    }
+
+    public void setInboxes(String[] inboxes) {
+        this.inboxes = inboxes;
     }
 }

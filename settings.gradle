@@ -1,2 +1,2 @@
 include ':GmailClone-app'
-rootProject.name = "TwitterClone"
+rootProject.name = "GmailClone"

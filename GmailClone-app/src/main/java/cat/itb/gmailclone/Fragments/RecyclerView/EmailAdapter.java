@@ -1,21 +1,18 @@
 package cat.itb.gmailclone.Fragments.RecyclerView;
 
-import android.graphics.BitmapFactory;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import cat.itb.gmailclone.Model.Email;
@@ -26,14 +23,14 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 
     List<Email> emails = new ArrayList<>();
 
-    public EmailAdapter(List<Email> emails ){
+    public EmailAdapter(List<Email> emails) {
         this.emails = emails;
     }
 
     @NonNull
     @Override
     public EmailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_basic_item,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_basic_item, parent, false);
 
         v.setOnClickListener(this);
 
@@ -50,7 +47,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
         return emails.size();
     }
 
-    public void setOnClickListener(View.OnClickListener listener){
+    public void setOnClickListener(View.OnClickListener listener) {
 
     }
 
@@ -60,8 +57,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
     }
 
 
-
-    class EmailViewHolder extends RecyclerView.ViewHolder{
+    class EmailViewHolder extends RecyclerView.ViewHolder {
         ImageView imageItem;
         TextView originItem;
         TextView titleItem;
@@ -81,14 +77,24 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 
         }
 
-        public void bindData(final Email email){
+        public void bindData(final Email email) {
             imageItem.setImageAlpha(email.getImage());
             originItem.setText(email.getOrigin());
             titleItem.setText(email.getTitle());
             descriptionItem.setText(email.getDescription());
-            dateItem.setText(email.toString());
+            dateItem.setText(email.getDate().toString());
             starItem.setEnabled(email.isStar());
 
+            if (email.isRead()) {
+                originItem.setTextColor(Color.GRAY);
+                titleItem.setTextColor(Color.GRAY);
+                dateItem.setTextColor(Color.GRAY);
+            } else {
+                originItem.setTextColor(Color.WHITE);
+                titleItem.setTextColor(Color.WHITE);
+                dateItem.setTextColor(Color.WHITE);
+            }
+            descriptionItem.setTextColor(Color.GRAY);
         }
     }
 
