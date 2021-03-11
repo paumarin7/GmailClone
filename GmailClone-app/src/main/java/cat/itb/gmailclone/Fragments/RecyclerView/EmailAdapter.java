@@ -1,6 +1,5 @@
 package cat.itb.gmailclone.Fragments.RecyclerView;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +29,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
     @NonNull
     @Override
     public EmailViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_basic_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_view, parent, false);
 
         v.setOnClickListener(this);
 

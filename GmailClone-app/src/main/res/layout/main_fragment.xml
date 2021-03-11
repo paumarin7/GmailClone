@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <com.google.android.material.navigation.NavigationView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -32,7 +33,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@drawable/toolbar_rounded"
                 android:elevation="4dp"
-                app:menu="@menu/top_app_bar"
+                app:menu="@menu/main_top_app_bar"
                 app:navigationIcon="@drawable/ic_baseline_menu_24"
                 tools:targetApi="lollipop">
 
@@ -69,7 +70,7 @@
 
             <include
                 android:id="@+id/include"
-                layout="@layout/recycler_view_basic" />
+                layout="@layout/recycler_view" />
 
 
         </androidx.core.widget.NestedScrollView>
@@ -103,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_app_bar" />
+            app:menu="@menu/main_bottom_app_bar" />
 
     </LinearLayout>
 

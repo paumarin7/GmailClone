@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/back"
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        android:title="@string/back"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/archive"
+        android:icon="@drawable/ic_baseline_archive_24"
+        android:title="@string/back"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:title="@string/back"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/markAsUnread"
+        android:icon="@drawable/ic_baseline_mail_outline_24"
+        android:title="@string/mark_as_unread"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/move_to"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/snooze"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/change_labels"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/mark_as_important"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/mute"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/view_in_light_theme"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/print"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/report_spam"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/add_to_tasks"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/help_and_feedback"
+        android:title="@string/back"
+        app:showAsAction="never" />
+
+</menu>

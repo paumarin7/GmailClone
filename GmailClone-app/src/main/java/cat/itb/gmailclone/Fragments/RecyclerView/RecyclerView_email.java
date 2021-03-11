@@ -31,7 +31,7 @@ public class RecyclerView_email extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.gmail, container, false);
+        View v = inflater.inflate(R.layout.main_fragment, container, false);
         emailModel = new ViewModelProvider(this).get(EmailViewModel.class);
         recyclerView = v.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
