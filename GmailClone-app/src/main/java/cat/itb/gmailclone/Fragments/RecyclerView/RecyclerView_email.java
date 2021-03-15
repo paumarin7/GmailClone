@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -42,15 +43,22 @@ public class RecyclerView_email extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         EmailAdapter adapter = new EmailAdapter(emails);
 
-        //setSupportActionBar((Toolbar) v.findViewById(R.id.toolbar));
+        Toolbar toolbar  = v.findViewById(R.id.topAppBar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
-//        drawer = v.findViewById(R.id.drawer);
-//
-//        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawer, R.string.open, R.string.close);
-//        drawer.addDrawerListener(drawerToggle);
-//        drawerToggle.syncState();
 
-      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawer = v.findViewById(R.id.draweLayout);
+        final ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawer, R.string.open, R.string.close);
+        drawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.open();
+            }
+        });
 
 //        adapter.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -60,6 +68,7 @@ public class RecyclerView_email extends Fragment {
 //                Navigation.findNavController(getActivity(),R.id.recyclerview).navigate(R.id.bookFragment);
 //            }
 //        });
+
         recyclerView.setAdapter(adapter);
 
 
@@ -79,14 +88,6 @@ public class RecyclerView_email extends Fragment {
         }
     }
 
-    // NO PARECE QUE ESTE METODO HAGA NADA (NAVIGATION DRAWER)
-//    @Override
-//    public void onBackPressed() {
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            drawer.closeDrawer(GravityCompat.START);
-//            super.onBackPressed();
-//        }
-//    }
+
+
 }
