@@ -11,9 +11,11 @@
         <item name="colorNavigationItemNormal">@color/unreadColor</item>
         <item name="colorNavigationItemSelected">@color/selectedColor</item>
         <item name="colorNavigationItemBackgroundSelected">@color/don_juan</item>
-        <item name="colorNavigationItemBackgroundPressed">@color/interfaceColor</item>
+        <item name="colorNavigationItemBackgroundPressed">@color/readColor</item>
         <item name="drawableNavigationItemBackground">@drawable/menu_item_background_color_state</item>
-        <item name="android:listDivider">@color/readColor</item>
+        <item name="android:listDivider">@color/unreadColor</item>
+
+
 
     </style>
 
@@ -23,11 +25,17 @@
         <item name="itemTextAppearance">@style/TextAppearance.Custom.Navigation.Item</item>
         <item name="itemTextColor">?attr/colorStateNavigationItem</item>
         <item name="itemBackground">?attr/drawableNavigationItemBackground</item>
+
+        <item name="android:background">@color/background</item>
+
+
+
     </style>
     <style name="TextAppearance.Custom.Navigation.Item" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/unreadColor</item>
         <item name="android:fontFamily">@font/google_sans_medium</item>
         <item name="android:textSize">14dp</item>
+
     </style>
 
     <!-- OTHER STUFF -->

@@ -79,7 +79,7 @@ public class RecyclerView_email extends Fragment {
         }
     }
 
-//    // NO PARECE QUE ESTE METODO HAGA NADA (NAVIGATION DRAWER)
+    // NO PARECE QUE ESTE METODO HAGA NADA (NAVIGATION DRAWER)
 //    @Override
 //    public void onBackPressed() {
 //        if (drawer.isDrawerOpen(GravityCompat.START)) {
