@@ -1,6 +1,9 @@
 package cat.itb.gmailclone.Fragments.RecyclerView;
 
 import android.graphics.Color;
+import android.icu.util.Calendar;
+import android.os.Build;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
@@ -36,6 +43,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
         return new EmailViewHolder(v);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull EmailViewHolder holder, int position) {
         holder.bindData(emails.get(position));
@@ -76,12 +84,26 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.N)
         public void bindData(final Email email) {
             imageItem.setImageAlpha(email.getImage());
             originItem.setText(email.getOrigin());
             titleItem.setText(email.getTitle());
             descriptionItem.setText(email.getDescription());
-            dateItem.setText(email.getDate().toString());
+
+            Date mailDate = email.getDate();
+            String date;
+            SimpleDateFormat today = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            SimpleDateFormat notToday = new SimpleDateFormat("dd MMM", Locale.getDefault());
+            SimpleDateFormat compareDay = new SimpleDateFormat("yyyyMMdd",Locale.getDefault());
+            if (compareDay.format(mailDate).equals(compareDay.format(Calendar.getInstance().getTime()))) {
+                date = today.format(mailDate);
+
+            } else {
+                date = notToday.format(mailDate);
+            }
+            dateItem.setText(date);
+
             starItem.setEnabled(email.isStar());
 
             if (email.isRead()) {
