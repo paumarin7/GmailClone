@@ -1,4 +1,4 @@
-package cat.itb.gmailclone.Fragments.RecyclerView;
+package cat.itb.gmailclone.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,15 +15,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import cat.itb.gmailclone.Fragments.RecyclerView.EmailAdapter;
 import cat.itb.gmailclone.Model.EmailViewModel;
 import cat.itb.gmailclone.R;
 
 import static cat.itb.gmailclone.Model.EmailViewModel.emails;
 
-public class RecyclerView_email extends Fragment {
+public class MainFragment extends Fragment {
     RecyclerView recyclerView;
     EmailViewModel emailModel;
     DrawerLayout drawer;
@@ -60,14 +62,15 @@ public class RecyclerView_email extends Fragment {
             }
         });
 
-//        adapter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                bundle.putSerializable("book",books.get(recyclerView.getChildAdapterPosition(v)));
-//                getParentFragmentManager().setFragmentResult("key",bundle);
-//                Navigation.findNavController(getActivity(),R.id.recyclerview).navigate(R.id.bookFragment);
-//            }
-//        });
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //recyclerView.getChildAdapterPosition(v)));
+                Navigation.findNavController(getActivity(),R.id.recyclerview).navigate(R.id.emailFragment);
+            }
+        });
+
+
 
         recyclerView.setAdapter(adapter);
 

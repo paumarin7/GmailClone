@@ -20,6 +20,7 @@ import cat.itb.gmailclone.R;
 
 public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHolder> implements View.OnClickListener {
 
+    private View.OnClickListener listener;
     List<Email> emails = new ArrayList<>();
 
     public EmailAdapter(List<Email> emails) {
@@ -47,12 +48,14 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
     }
 
     public void setOnClickListener(View.OnClickListener listener) {
-
+        this.listener=listener;
     }
 
     @Override
     public void onClick(View v) {
-
+        if (listener!=null){
+            listener.onClick(v);
+        }
     }
 
 
