@@ -6,6 +6,19 @@
 
     <fragment
         android:id="@+id/recyclerView_email"
-        android:name="cat.itb.gmailclone.Fragments.RecyclerView.RecyclerView_email"
-        android:label="RecyclerView_email" />
+        android:name="cat.itb.gmailclone.Fragments.MainFragment"
+        android:label="RecyclerView_email" >
+        <action
+            android:id="@+id/action_recyclerView_email_to_emailFragment"
+            app:destination="@id/emailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailFragment"
+        android:name="cat.itb.gmailclone.Fragments.EmailFragment"
+        android:label="EmailFragment" >
+        <action
+            android:id="@+id/action_emailFragment_to_recyclerView_email"
+            app:destination="@id/recyclerView_email"
+            app:enterAnim="@anim/nav_default_pop_enter_anim" />
+    </fragment>
 </navigation>
