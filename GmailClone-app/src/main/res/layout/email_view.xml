@@ -9,11 +9,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/draweLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <androidx.coordinatorlayout.widget.CoordinatorLayout
 
             android:layout_width="wrap_content"
@@ -37,7 +32,7 @@
                     android:layout_height="?attr/actionBarSize"
                     android:background="@drawable/toolbar_rounded"
                     android:elevation="4dp"
-                    app:menu="@menu/main_top_app_bar"
+                    app:menu="@menu/email_top_app_bar"
                     app:navigationIcon="@drawable/ic_baseline_menu_24"
                     tools:targetApi="lollipop">
 
@@ -80,17 +75,26 @@
 
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigation_view"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/emailHeader">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/subjectTextView"
+            />
+        <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            style="@style/Widget.Custom.NavigationView"
-            android:clipToPadding="false"
-            app:headerLayout="@layout/header_navigation_drawer"
-            app:menu="@menu/navigation_drawer"
+            android:id="@+id/favoriteCheckBox"
+
             />
 
-    </androidx.drawerlayout.widget.DrawerLayout>
+    </RelativeLayout>
+
+
 
 </RelativeLayout>
