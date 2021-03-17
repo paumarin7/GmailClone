@@ -9,10 +9,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@color/background">
 
             <com.google.android.material.appbar.AppBarLayout
@@ -33,26 +34,11 @@
                     android:background="@drawable/toolbar_rounded"
                     android:elevation="4dp"
                     app:menu="@menu/email_top_app_bar"
-                    app:navigationIcon="@drawable/ic_baseline_menu_24"
+
+                    app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
                     tools:targetApi="lollipop">
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
 
-                        <SearchView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:iconifiedByDefault="false"
-                            android:queryBackground="@android:color/transparent"
-                            android:queryHint="Search email"
-                            android:searchHintIcon="@null"
-                            android:searchIcon="@null"
-
-                            />
-
-                    </RelativeLayout>
                 </com.google.android.material.appbar.MaterialToolbar>
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -76,24 +62,6 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/emailHeader">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/subjectTextView"
-            />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/favoriteCheckBox"
-
-            />
-
-    </RelativeLayout>
 
 
 
