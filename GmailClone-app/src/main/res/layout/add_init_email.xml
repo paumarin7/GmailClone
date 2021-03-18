@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/emailInitImage"
+        android:layout_width="match_parent"
+        android:layout_height="202dp"
+        android:src="@drawable/addinitemail"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:backgroundTint="#2196F3"
+        android:layout_marginTop="189dp"
+        android:textAlignment="textStart"
+        android:text="You can now add all your email addresses"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="#2C43C6"
+        android:backgroundTint="#2196F3"
+        android:layout_marginTop="215dp"
+        android:textAlignment="textStart"
+        android:text="Learn more"
+        />
+
+</RelativeLayout>
