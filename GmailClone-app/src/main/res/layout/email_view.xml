@@ -5,15 +5,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-
+            android:id="@+id/wot"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/background">
 
             <com.google.android.material.appbar.AppBarLayout
@@ -42,27 +43,30 @@
                 </com.google.android.material.appbar.MaterialToolbar>
             </com.google.android.material.appbar.AppBarLayout>
 
-
-            <!-- Note: A RecyclerView can also be used -->
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/background"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-                <!-- Scrollable content -->
-
-                <include
-                    android:id="@+id/include"
-                    layout="@layout/recycler_view" />
-
-
-            </androidx.core.widget.NestedScrollView>
-
-
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <include
+        android:layout_below="@id/wot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:id="@+id/email_header"
+        layout="@layout/email_header" />
 
+    <include
+        android:layout_below="@id/email_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:id="@+id/email_origin"
+        layout="@layout/email_origin" />
 
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/email_body"
+        android:background="@color/background"
+        android:layout_below="@+id/email_origin"
+        layout="@layout/email_content" />
 
 </RelativeLayout>

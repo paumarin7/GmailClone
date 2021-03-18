@@ -65,7 +65,9 @@ public class MainFragment extends Fragment {
         adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //recyclerView.getChildAdapterPosition(v)));
+                Bundle b = new Bundle();
+                b.putSerializable("email", emails.get(recyclerView.getChildAdapterPosition(v)));
+                getParentFragmentManager().setFragmentResult("email", b);
                 Navigation.findNavController(getActivity(),R.id.recyclerview).navigate(R.id.emailFragment);
             }
         });

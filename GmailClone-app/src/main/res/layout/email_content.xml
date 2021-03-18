@@ -8,7 +8,7 @@
         android:id="@+id/subjectTextView"
         style="@style/email_header"
         />
-    
+
     <com.google.android.material.button.MaterialButton
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -27,7 +27,5 @@
         android:layout_alignParentRight="true"
 
         />
-
-
 
 </RelativeLayout>

@@ -56,6 +56,13 @@
         <item name="android:textColor">@color/readColor</item>
     </style>
 
+    <style name="email_header">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:textColor">@color/unreadColor</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="interfaceItem">
         <item name="color">@color/selectedColor</item>
         <item name="tint">@color/selectedColor</item>
