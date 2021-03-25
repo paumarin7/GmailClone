@@ -3,7 +3,6 @@ package cat.itb.gmailclone.Fragments.RecyclerView;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Build;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +91,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
             imageItem.setImageAlpha(email.getImage());
             originItem.setText(email.getOrigin());
             titleItem.setText(email.getTitle());
-            descriptionItem.setText(email.getDescription());
+            descriptionItem.setText(email.getBody());
 
             Date mailDate = email.getDate();
             String date;
@@ -107,7 +106,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
             }
             dateItem.setText(date);
 
-            starItem.setEnabled(email.isStar());
+            starItem.setEnabled(email.isFavorite());
 
             if (email.isRead()) {
                 originItem.setTextColor(Color.GRAY);

@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/profilePicture"
+        android:id="@+id/originProfilePicture"
+        android:tooltipText="@string/all_inboxes"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
         android:layout_alignParentStart="true"
@@ -16,16 +19,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/origin"
-        android:layout_toRightOf="@+id/profilePicture"
+        android:layout_toRightOf="@+id/originProfilePicture"
         style="@style/email_origin"
-        android:layout_toEndOf="@+id/profilePicture" />
+        android:layout_toEndOf="@+id/originProfilePicture" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/origin"
-        android:id="@+id/date"
+        android:id="@+id/dateTextView"
 
         android:layout_toEndOf="@+id/origin" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        app:icon="@drawable/ic_baseline_reply_24"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/replyButton"
+        android:layout_toRightOf="@id/dateTextView"
+        android:layout_toEndOf="@id/dateTextView" />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/optionsButton"
+        android:layout_toRightOf="@id/replyButton"
+        android:layout_toEndOf="@id/replyButton" />
+
+
 
 </RelativeLayout>

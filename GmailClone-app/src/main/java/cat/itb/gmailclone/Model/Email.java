@@ -7,19 +7,19 @@ public class Email implements Serializable {
     int image;
     String origin;
     String title;
-    String description;
+    String body;
     Date date;
-    boolean star;
+    boolean favorite;
     boolean read;
     String[] inboxes;
 
-    public Email(int image, String origin, String title, String description, Date date, boolean star, boolean read, String[] inboxes) {
+    public Email(int image, String origin, String title, String body, Date date, boolean favorite, boolean read, String[] inboxes) {
         this.image = image;
         this.origin = origin;
         this.title = title;
-        this.description = description;
+        this.body = body;
         this.date = date;
-        this.star = star;
+        this.favorite = favorite;
         this.read = read;
         this.inboxes = inboxes;
     }
@@ -48,12 +48,12 @@ public class Email implements Serializable {
         this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getBody() {
+        return body;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public Date getDate() {
@@ -64,12 +64,12 @@ public class Email implements Serializable {
         this.date = date;
     }
 
-    public boolean isStar() {
-        return star;
+    public boolean isFavorite() {
+        return favorite;
     }
 
-    public void setStar(boolean star) {
-        this.star = star;
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public boolean isRead() {
