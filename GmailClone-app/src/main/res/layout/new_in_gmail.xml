@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/new_in_gmail"
+    >
 
     <ImageView
         android:id="@+id/gmailIcon"
@@ -37,6 +39,7 @@
         />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/got_it"
         android:layout_width="match_parent"
         android:layout_height="69dp"
         android:layout_alignParentBottom="true"

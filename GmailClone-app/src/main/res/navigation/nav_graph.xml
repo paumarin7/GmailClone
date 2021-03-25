@@ -21,4 +21,20 @@
             app:destination="@id/recyclerView_email"
             app:enterAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/new_in_Gmail_Fragment"
+        android:name="cat.itb.gmailclone.Fragments.New_in_Gmail_Fragment"
+        android:label="New_in_Gmail_Fragment" >
+        <action
+            android:id="@+id/action_new_in_Gmail_Fragment_to_add_init_email_Fragment2"
+            app:destination="@id/add_init_email_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_init_email_Fragment"
+        android:name="cat.itb.gmailclone.Fragments.Add_init_email_Fragment"
+        android:label="Add_init_email_Fragment" >
+        <action
+            android:id="@+id/action_add_init_email_Fragment_to_recyclerView_email"
+            app:destination="@id/recyclerView_email" />
+    </fragment>
 </navigation>
