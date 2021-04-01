@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +32,7 @@ import static cat.itb.gmailclone.Resources.GetAccountEmails.getAccount;
 public class Send_email_Fragment extends Fragment {
         Spinner spinnerEmails;
         ImageButton send;
-        TextInputEditText origin;
+        TextInputEditText to;
         TextInputEditText title;
         TextInputEditText body;
 
@@ -44,7 +45,7 @@ public class Send_email_Fragment extends Fragment {
         imgref = FirebaseDatabase.getInstance().getReference();
         spinnerEmails = v.findViewById(R.id.spinner_Emails);
         send = v.findViewById(R.id.enviarEmail);
-        origin = v.findViewById(R.id.originNewEmail);
+        to = v.findViewById(R.id.originNewEmail);
         title = v.findViewById(R.id.titleNewEmail);
         body = v.findViewById(R.id.bodyNewEmail);
 
@@ -82,7 +83,8 @@ public class Send_email_Fragment extends Fragment {
 
                 Date currentTime = Calendar.getInstance().getTime();
 
-                Email m = new Email(0,origin.getText().toString(),title.getText().toString(), body.getText().toString(), currentTime,false,false);
+                Toast.makeText(getContext(), spinnerEmails.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
+                Email m = new Email(0,spinnerEmails.getSelectedItem().toString(),to.getText().toString(),title.getText().toString(), body.getText().toString(), currentTime,false,false);
                 imgref.child(key).setValue(m);
             }
         });

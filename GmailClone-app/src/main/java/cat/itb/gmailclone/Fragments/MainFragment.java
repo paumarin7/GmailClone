@@ -101,7 +101,7 @@ public class MainFragment extends Fragment {
         //FireBase
         mAuth = FirebaseAuth.getInstance();
         acct = GoogleSignIn.getLastSignedInAccount(getActivity());
-        Query filter = database.getReference().orderByChild("origin").equalTo(acct.getEmail());
+        Query filter = database.getReference().orderByChild("to").equalTo(acct.getEmail());
         final FirebaseRecyclerOptions<Email> options = new FirebaseRecyclerOptions.Builder<Email>().setQuery(filter, Email.class).build();
 
 
