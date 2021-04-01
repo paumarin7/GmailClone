@@ -3,12 +3,14 @@ package cat.itb.gmailclone.Fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.DateSorter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -50,6 +52,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import cat.itb.gmailclone.Fragments.RecyclerView.EmailAdapter;
@@ -70,7 +74,6 @@ public class MainFragment extends Fragment {
     private FirebaseAuth mAuth;
     private Button signIn;
     private GoogleSignInClient mGoogleSignInClient;
-    public static List<Email> emails = new ArrayList<>();
     public static  GoogleSignInAccount acct;
     EmailAdapter adapter;
     FloatingActionButton writeEmail;
@@ -94,34 +97,65 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.main_fragment, container, false);
 
+
+        //FireBase
         mAuth = FirebaseAuth.getInstance();
         acct = GoogleSignIn.getLastSignedInAccount(getActivity());
-        recyclerView = v.findViewById(R.id.recyclerview);
+        Query filter = database.getReference().orderByChild("origin").equalTo(acct.getEmail());
+        final FirebaseRecyclerOptions<Email> options = new FirebaseRecyclerOptions.Builder<Email>().setQuery(filter, Email.class).build();
 
+
+
+        //Ir a escribir email
         writeEmail = v.findViewById(R.id.writeEmail);
-
         writeEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.send_email_Fragment);
             }
         });
-       Query filter = database.getReference().orderByChild("origin").equalTo(acct.getEmail());
 
 
-       final FirebaseRecyclerOptions<Email> options = new FirebaseRecyclerOptions.Builder<Email>().setQuery(filter, Email.class).build();
+        //RecyclerView
+        recyclerView = v.findViewById(R.id.recyclerview);
+        adapter = new EmailAdapter(options);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        mLayoutManager.setReverseLayout(true);
+        recyclerView.setLayoutManager(mLayoutManager);
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle b = new Bundle();
+                ObservableSnapshotArray<Email> mSnapshots = options.getSnapshots();
+                Email e =  mSnapshots.get(recyclerView.getChildAdapterPosition(v));
+                b.putSerializable("email",  e);
+                getParentFragmentManager().setFragmentResult("email", b);
+                Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.emailFragment);
+            }
+        });
+        recyclerView.setAdapter(adapter);
 
 
-         adapter = new EmailAdapter(options);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
+        //TopAppBar
         Toolbar toolbar = v.findViewById(R.id.topAppBar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        profileIcon = v.findViewById(R.id.mainFragmentProfileIcon);
-        Bitmap bitmap = null;
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.open();
+            }
+        });
 
+
+        //Email Icon
+        profileIcon = v.findViewById(R.id.mainFragmentProfileIcon);
+        profileIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signIn();
+            }
+        });
+        Bitmap bitmap = null;
         if (acct != null) {
             Picasso.with(getContext())
                     .load(acct.getPhotoUrl())
@@ -131,59 +165,21 @@ public class MainFragment extends Fragment {
                     .into(profileIcon);
         }
 
-
+        //NavigationDrawer
         drawer = v.findViewById(R.id.draweLayout);
         final ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(getActivity(), drawer, R.string.open, R.string.close);
         drawer.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.open();
-            }
-        });
-
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle b = new Bundle();
-
-                 ObservableSnapshotArray<Email> mSnapshots = options.getSnapshots();
-                Email e =  mSnapshots.get(recyclerView.getChildAdapterPosition(v));
-                b.putSerializable("email",  e);
-                getParentFragmentManager().setFragmentResult("email", b);
-                Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.emailFragment);
-            }
-        });
 
 
-        recyclerView.setAdapter(adapter);
-
-
-        profileIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
         return v;
-
-    }
-
-    // NO PARECE QUE ESTE METODO HAGA NADA (NAVIGATION DRAWER)
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            drawer.openDrawer(GravityCompat.START);
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
     }
 
 
+
+    //Metodo para Conseguir conectarse con google acc
     private void createRequest() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -194,18 +190,22 @@ public class MainFragment extends Fragment {
         mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
     }
 
+    //Iniciar el intent para conectarse a la cuenta y poder elegir que cuenta usamos
     private void signIn() {
         mGoogleSignInClient.signOut();
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
+
+    //Metodo necesario en fragment para poder usar onActivityResult
     @Override
     public void startActivityForResult(Intent intent, int requestCode) {
         super.startActivityForResult(intent, requestCode);
 
     }
 
+    //Metodo Para resolver Intents
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -227,6 +227,7 @@ public class MainFragment extends Fragment {
         }
     }
 
+    //Metodo que resuelve una task para conseguir conectarse con la cuenta de google
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)

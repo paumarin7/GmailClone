@@ -29,7 +29,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
 import static cat.itb.gmailclone.Fragments.MainFragment.acct;
-import static cat.itb.gmailclone.Fragments.MainFragment.emails;
+
 
 
 import static java.security.AccessController.getContext;

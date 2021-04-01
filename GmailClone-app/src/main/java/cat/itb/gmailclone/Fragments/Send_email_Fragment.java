@@ -24,7 +24,7 @@ import java.util.Date;
 import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
 
-import static cat.itb.gmailclone.Fragments.MainFragment.emails;
+
 import static cat.itb.gmailclone.Resources.GetAccountEmails.getAccount;
 
 
@@ -83,7 +83,6 @@ public class Send_email_Fragment extends Fragment {
                 Date currentTime = Calendar.getInstance().getTime();
 
                 Email m = new Email(0,origin.getText().toString(),title.getText().toString(), body.getText().toString(), currentTime,false,false);
-                emails.add(m);
                 imgref.child(key).setValue(m);
             }
         });
