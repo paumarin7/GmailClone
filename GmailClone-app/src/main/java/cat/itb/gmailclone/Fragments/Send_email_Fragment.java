@@ -14,21 +14,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
 
+import static cat.itb.gmailclone.Fragments.MainFragment.emails;
 import static cat.itb.gmailclone.Resources.GetAccountEmails.getAccount;
 
 
 public class Send_email_Fragment extends Fragment {
-        Spinner emails;
+        Spinner spinnerEmails;
         ImageButton send;
-
+        TextInputEditText origin;
+        TextInputEditText title;
+        TextInputEditText body;
 
     DatabaseReference imgref;
 
@@ -37,8 +42,11 @@ public class Send_email_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.send_email, container, false);
         imgref = FirebaseDatabase.getInstance().getReference();
-        emails = v.findViewById(R.id.spinner_Emails);
+        spinnerEmails = v.findViewById(R.id.spinner_Emails);
         send = v.findViewById(R.id.enviarEmail);
+        origin = v.findViewById(R.id.originNewEmail);
+        title = v.findViewById(R.id.titleNewEmail);
+        body = v.findViewById(R.id.bodyNewEmail);
 
 
 
@@ -54,7 +62,7 @@ public class Send_email_Fragment extends Fragment {
                 android.R.layout.simple_spinner_dropdown_item, items);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        emails.setAdapter(adapter);
+        spinnerEmails.setAdapter(adapter);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,8 +80,10 @@ public class Send_email_Fragment extends Fragment {
 //    boolean read;
 //    String[] inboxes;
 
+                Date currentTime = Calendar.getInstance().getTime();
 
-                Email m = new Email(0,"paumv987@gmail.com","Hola", "Hola soi yo", new Date(2021/03/31),false,false);
+                Email m = new Email(0,origin.getText().toString(),title.getText().toString(), body.getText().toString(), currentTime,false,false);
+                emails.add(m);
                 imgref.child(key).setValue(m);
             }
         });

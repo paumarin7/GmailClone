@@ -35,6 +35,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -72,6 +73,7 @@ public class MainFragment extends Fragment {
     public static List<Email> emails = new ArrayList<>();
     public static  GoogleSignInAccount acct;
     EmailAdapter adapter;
+    FloatingActionButton writeEmail;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +84,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-//        adapter.startListening();
+        adapter.startListening();
 
     }
 
@@ -92,17 +94,25 @@ public class MainFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.main_fragment, container, false);
 
-        mAuth.getCurrentUser();
-
+        mAuth = FirebaseAuth.getInstance();
         acct = GoogleSignIn.getLastSignedInAccount(getActivity());
-        Toast.makeText(getContext(), ""+emails.size(),Toast.LENGTH_LONG).show();
         recyclerView = v.findViewById(R.id.recyclerview);
 
-      //  Query filter = database.getReference().child("origin").equalTo(acct.getEmail());
-    //    FirebaseRecyclerOptions<Email> options = new FirebaseRecyclerOptions.Builder<Email>().setQuery(filter, Email.class).build();
+        writeEmail = v.findViewById(R.id.writeEmail);
+
+        writeEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.send_email_Fragment);
+            }
+        });
+       Query filter = database.getReference().orderByChild("origin").equalTo(acct.getEmail());
 
 
-      //   adapter = new EmailAdapter(options);
+       final FirebaseRecyclerOptions<Email> options = new FirebaseRecyclerOptions.Builder<Email>().setQuery(filter, Email.class).build();
+
+
+         adapter = new EmailAdapter(options);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -135,18 +145,21 @@ public class MainFragment extends Fragment {
             }
         });
 
-       // adapter.setOnClickListener(new View.OnClickListener() {
-      //      @Override
-      //      public void onClick(View v) {
-     //           Bundle b = new Bundle();
-      //          b.putSerializable("email", emails.get(recyclerView.getChildAdapterPosition(v)));
-       //         getParentFragmentManager().setFragmentResult("email", b);
-       //         Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.emailFragment);
-       //     }
- //       });
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle b = new Bundle();
+
+                 ObservableSnapshotArray<Email> mSnapshots = options.getSnapshots();
+                Email e =  mSnapshots.get(recyclerView.getChildAdapterPosition(v));
+                b.putSerializable("email",  e);
+                getParentFragmentManager().setFragmentResult("email", b);
+                Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.emailFragment);
+            }
+        });
 
 
-      //  recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
 
         profileIcon.setOnClickListener(new View.OnClickListener() {

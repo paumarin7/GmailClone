@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import cat.itb.gmailclone.R;
 
 public class New_in_Gmail_Fragment extends Fragment {
-    private FirebaseAuth mAuth;
+    public static FirebaseAuth mAuth;
 
     @Nullable
     @Override

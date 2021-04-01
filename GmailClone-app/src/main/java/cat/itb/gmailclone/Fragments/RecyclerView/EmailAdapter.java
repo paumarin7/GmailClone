@@ -31,7 +31,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import static cat.itb.gmailclone.Fragments.MainFragment.acct;
 import static cat.itb.gmailclone.Fragments.MainFragment.emails;
 
-import static cat.itb.gmailclone.MainActivity.getContexto;
+
 import static java.security.AccessController.getContext;
 
 public class EmailAdapter extends FirebaseRecyclerAdapter<Email,EmailAdapter.EmailViewHolder> implements View.OnClickListener {
@@ -49,7 +49,6 @@ public class EmailAdapter extends FirebaseRecyclerAdapter<Email,EmailAdapter.Ema
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_view, parent, false);
 
         v.setOnClickListener(this);
-
         return new EmailViewHolder(v);
     }
 
@@ -58,6 +57,8 @@ public class EmailAdapter extends FirebaseRecyclerAdapter<Email,EmailAdapter.Ema
     @Override
     protected void onBindViewHolder(@NonNull EmailViewHolder holder, int position, @NonNull Email model) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
+
 
 
                 holder.bindData(model);
