@@ -30,9 +30,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import cat.itb.gmailclone.Model.User;
 import cat.itb.gmailclone.R;
 
 import static android.content.ContentValues.TAG;
+import static cat.itb.gmailclone.Fragments.MainFragment.myRef;
 
 public class Add_init_email_Fragment extends Fragment {
     private static final int RC_SIGN_IN = 123;
@@ -113,7 +115,8 @@ public class Add_init_email_Fragment extends Fragment {
         }
     }
 
-    private void firebaseAuthWithGoogle(String idToken) {
+    //Metodo que resuelve una task para conseguir conectarse con la cuenta de google
+    private void firebaseAuthWithGoogle(final String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
@@ -123,7 +126,10 @@ public class Add_init_email_Fragment extends Fragment {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Navigation.findNavController(getActivity(),R.id.add_init_email_Address).navigate(R.id.recyclerView_email);
+                            User u = new User(idToken, user.getEmail());
+                            myRef.child("users").child(user.getUid()).setValue(u);
+
+                            Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.recyclerView_email);
 
                         } else {
                             // If sign in fails, display a message to the user.

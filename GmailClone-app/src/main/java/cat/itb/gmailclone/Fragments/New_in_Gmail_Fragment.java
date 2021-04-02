@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,6 +42,7 @@ public class New_in_Gmail_Fragment extends Fragment {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+//        Toast.makeText(getContext(), currentUser.getEmail()+"", Toast.LENGTH_LONG).show();
         if (currentUser!= null){
             Navigation.findNavController(getActivity(),R.id.new_in_gmail).navigate(R.id.recyclerView_email);
         }

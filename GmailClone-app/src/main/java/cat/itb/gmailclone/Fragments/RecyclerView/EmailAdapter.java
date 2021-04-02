@@ -3,36 +3,32 @@ package cat.itb.gmailclone.Fragments.RecyclerView;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
+import cat.itb.gmailclone.Resources.CircleTransformation;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.squareup.picasso.Picasso;
 
 
-import static cat.itb.gmailclone.Fragments.MainFragment.acct;
-
-
-
-import static java.security.AccessController.getContext;
+import static cat.itb.gmailclone.MainActivity.getContextOfApplication;
 
 public class EmailAdapter extends FirebaseRecyclerAdapter<Email,EmailAdapter.EmailViewHolder> implements View.OnClickListener {
 
@@ -84,7 +80,7 @@ public class EmailAdapter extends FirebaseRecyclerAdapter<Email,EmailAdapter.Ema
 
 
     class EmailViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageItem;
+        ImageButton imageItem;
         TextView originItem;
         TextView titleItem;
         TextView descriptionItem;
@@ -94,7 +90,7 @@ public class EmailAdapter extends FirebaseRecyclerAdapter<Email,EmailAdapter.Ema
 
         public EmailViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageItem = itemView.findViewById(R.id.imageItem);
+            imageItem = itemView.findViewById(R.id.imageButton);
             originItem = itemView.findViewById(R.id.originItem);
             titleItem = itemView.findViewById(R.id.titleItem);
             descriptionItem = itemView.findViewById(R.id.descriptionItem);
@@ -106,8 +102,12 @@ public class EmailAdapter extends FirebaseRecyclerAdapter<Email,EmailAdapter.Ema
         @RequiresApi(api = Build.VERSION_CODES.N)
         public void bindData(final Email email) {
 
+            Picasso.with(getContextOfApplication())
+                    .load(email.getPhotoUrl())
+                    .resize(130, 130)
+                    .centerCrop().transform(new CircleTransformation())
+                    .into(imageItem);
 
-                imageItem.setImageAlpha(email.getImage());
                 originItem.setText(email.getOrigin());
                 titleItem.setText(email.getTitle());
                 descriptionItem.setText(email.getBody());
