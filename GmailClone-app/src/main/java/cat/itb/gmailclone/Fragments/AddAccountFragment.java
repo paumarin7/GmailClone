@@ -38,9 +38,11 @@ public class AddAccountFragment extends Fragment {
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
     private Button signIn;
+    private Button takeMeToGmail;
     private GoogleSignInClient mGoogleSignInClient;
 
     private MaterialButton takeMeToGmail;
+
 
 
     @Override
@@ -73,6 +75,14 @@ public class AddAccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+takeMeToGmail.setEnabled(false);
+        takeMeToGmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.recyclerView_email);
             }
         });
 
@@ -134,7 +144,7 @@ public class AddAccountFragment extends Fragment {
                             FirebaseUser user = mAuth.getCurrentUser();
                             User u = new User(idToken, user.getEmail());
                             myRef.child("users").child(user.getUid()).setValue(u);
-
+                            takeMeToGmail.setEnabled(true);
                             Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.recyclerView_email);
 
                         } else {
