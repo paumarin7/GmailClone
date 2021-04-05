@@ -4,32 +4,45 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Email implements Serializable {
-    int image;
+    String photoUrl;
     String origin;
+    String to;
     String title;
     String body;
     Date date;
     boolean favorite;
     boolean read;
-    String[] inboxes;
 
-    public Email(int image, String origin, String title, String body, Date date, boolean favorite, boolean read, String[] inboxes) {
-        this.image = image;
+
+    public Email(String photoUrl, String origin, String to, String title, String body, Date date, boolean favorite, boolean read) {
+        this.photoUrl = photoUrl;
         this.origin = origin;
+        this.to = to;
         this.title = title;
         this.body = body;
         this.date = date;
         this.favorite = favorite;
         this.read = read;
-        this.inboxes = inboxes;
     }
 
-    public int getImage() {
-        return image;
+    public Email() {
     }
 
-    public void setImage(int image) {
-        this.image = image;
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setImage(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public String getOrigin() {
@@ -80,11 +93,5 @@ public class Email implements Serializable {
         this.read = read;
     }
 
-    public String[] getInboxes() {
-        return inboxes;
-    }
 
-    public void setInboxes(String[] inboxes) {
-        this.inboxes = inboxes;
-    }
 }

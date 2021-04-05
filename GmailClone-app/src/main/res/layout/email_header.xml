@@ -1,51 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="69dp"
-        android:layout_height="69dp"
-        android:id="@+id/profilePicture"
-        />
-
-    <TextView
+    <include
+        android:id="@+id/email_header"
+        layout="@layout/email_subject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/originTextView"/>
+        android:background="@color/background" />
 
-    <TextView
+    <include
+        android:id="@+id/email_origin"
+        layout="@layout/email_origin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/profilePicture"
-        android:id="@+id/dateTextView"
-        android:layout_toEndOf="@+id/profilePicture" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/subjectTextView"
-        style="@style/email_header"
-        />
-    
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_toRightOf="@+id/subjectTextView"
-        android:id="@+id/inboxLabel"
-        style="@style/email_header"
-        android:layout_toEndOf="@+id/subjectTextView" />
-
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/favCheckBox"
-        android:button="@android:drawable/btn_star"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        style="@style/email_header"
-        android:layout_alignParentRight="true"
-
-        />
-
+        android:layout_below="@id/email_header"
+        android:background="@color/background" />
 
 
 </RelativeLayout>

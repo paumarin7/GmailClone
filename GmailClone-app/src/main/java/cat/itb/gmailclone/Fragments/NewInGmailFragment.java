@@ -16,8 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import cat.itb.gmailclone.R;
 
-public class New_in_Gmail_Fragment extends Fragment {
-    private FirebaseAuth mAuth;
+public class NewInGmailFragment extends Fragment {
+    public static FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -30,7 +30,7 @@ public class New_in_Gmail_Fragment extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(),R.id.new_in_gmail).navigate(R.id.add_init_email_Fragment);
+                Navigation.findNavController(getActivity(), R.id.new_in_gmail).navigate(R.id.add_init_email_Fragment);
             }
         });
 
@@ -41,8 +41,9 @@ public class New_in_Gmail_Fragment extends Fragment {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser!= null){
-            Navigation.findNavController(getActivity(),R.id.new_in_gmail).navigate(R.id.recyclerView_email);
+//        Toast.makeText(getContext(), currentUser.getEmail()+"", Toast.LENGTH_LONG).show();
+        if (currentUser != null) {
+            Navigation.findNavController(getActivity(), R.id.new_in_gmail).navigate(R.id.mainFragmentRecyclerView);
         }
     }
 }

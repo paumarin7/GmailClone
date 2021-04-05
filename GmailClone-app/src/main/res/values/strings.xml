@@ -30,4 +30,23 @@
     <string name="forward">Forward</string>
     <string name="back">Back</string>
     <string name="mark_as_unread">Mark as unread</string>
+    <string name="archive">Archive</string>
+    <string name="add_to_tasks">Add to Tasks</string>
+    <string name="report_spam">Report spam</string>
+    <string name="print">Print</string>
+    <string name="view_in_light_theme">View in light theme</string>
+    <string name="mute">Mute</string>
+    <string name="change_labels">Change labels</string>
+    <string name="mark_as_important">Mark as important</string>
+    <string name="snooze">Snooze</string>
+    <string name="move_to">Move to</string>
+    <string name="delete">Delete</string>
+    <string name="take_me_to_gmail">Take Me To Gmail</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="subject">Subject</string>
+    <string name="compose_email">Compose email</string>
+    <string name="new_meeting">New meeting</string>
+    <string name="join_a_meeting">Join a meeting</string>
+    <string name="authid" translatable="false">269752629440-k3n1048kgg80jqsd9r4qh6nlcaue5jks.apps.googleusercontent.com</string>
 </resources>

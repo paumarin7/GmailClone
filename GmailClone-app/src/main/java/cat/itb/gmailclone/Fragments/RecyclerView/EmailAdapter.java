@@ -7,31 +7,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.squareup.picasso.Picasso;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
+import cat.itb.gmailclone.Resources.CircleTransformation;
 
+import static cat.itb.gmailclone.MainActivity.getContextOfApplication;
 
-public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHolder> implements View.OnClickListener {
+public class EmailAdapter extends FirebaseRecyclerAdapter<Email, EmailAdapter.EmailViewHolder> implements View.OnClickListener {
 
     private View.OnClickListener listener;
-    List<Email> emails = new ArrayList<>();
 
-    public EmailAdapter(List<Email> emails) {
-        this.emails = emails;
+
+    public EmailAdapter(FirebaseRecyclerOptions<Email> emails) {
+        super(emails);
     }
+
+    ;
 
     @NonNull
     @Override
@@ -39,35 +45,39 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_view, parent, false);
 
         v.setOnClickListener(this);
-
         return new EmailViewHolder(v);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    @Override
-    public void onBindViewHolder(@NonNull EmailViewHolder holder, int position) {
-        holder.bindData(emails.get(position));
-    }
 
     @Override
-    public int getItemCount() {
-        return emails.size();
-    }
+    protected void onBindViewHolder(@NonNull EmailViewHolder holder, int position, @NonNull Email model) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 
-    public void setOnClickListener(View.OnClickListener listener) {
-        this.listener=listener;
-    }
 
-    @Override
-    public void onClick(View v) {
-        if (listener!=null){
-            listener.onClick(v);
+            holder.bindData(model);
+
+
         }
     }
 
 
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null) {
+            listener.onClick(v);
+        }
+    }
+
+    public void notifyData() {
+        notifyDataSetChanged();
+    }
+
     class EmailViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageItem;
+        ImageButton imageItem;
         TextView originItem;
         TextView titleItem;
         TextView descriptionItem;
@@ -77,7 +87,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 
         public EmailViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageItem = itemView.findViewById(R.id.imageItem);
+            imageItem = itemView.findViewById(R.id.imageButton);
             originItem = itemView.findViewById(R.id.originItem);
             titleItem = itemView.findViewById(R.id.titleItem);
             descriptionItem = itemView.findViewById(R.id.descriptionItem);
@@ -88,7 +98,13 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
 
         @RequiresApi(api = Build.VERSION_CODES.N)
         public void bindData(final Email email) {
-            imageItem.setImageAlpha(email.getImage());
+
+            Picasso.with(getContextOfApplication())
+                    .load(email.getPhotoUrl())
+                    .resize(130, 130)
+                    .centerCrop().transform(new CircleTransformation())
+                    .into(imageItem);
+
             originItem.setText(email.getOrigin());
             titleItem.setText(email.getTitle());
             descriptionItem.setText(email.getBody());
@@ -97,7 +113,7 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
             String date;
             SimpleDateFormat today = new SimpleDateFormat("HH:mm", Locale.getDefault());
             SimpleDateFormat notToday = new SimpleDateFormat("dd MMM", Locale.getDefault());
-            SimpleDateFormat compareDay = new SimpleDateFormat("yyyyMMdd",Locale.getDefault());
+            SimpleDateFormat compareDay = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
             if (compareDay.format(mailDate).equals(compareDay.format(Calendar.getInstance().getTime()))) {
                 date = today.format(mailDate);
 
@@ -118,7 +134,9 @@ public class EmailAdapter extends RecyclerView.Adapter<EmailAdapter.EmailViewHol
                 dateItem.setTextColor(Color.WHITE);
             }
             descriptionItem.setTextColor(Color.GRAY);
+
         }
+
     }
 
 }

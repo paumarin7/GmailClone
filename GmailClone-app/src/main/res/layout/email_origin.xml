@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/originProfilePicture"
-        android:tooltipText="@string/all_inboxes"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginStart="20dp"
-        />
+        android:layout_marginLeft="20dp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/origin"
-        android:layout_toRightOf="@+id/originProfilePicture"
+        android:id="@+id/address"
         style="@style/email_origin"
-        android:layout_toEndOf="@+id/originProfilePicture" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/originProfilePicture"
+        android:layout_toRightOf="@+id/originProfilePicture" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/origin"
         android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/address"
 
-        android:layout_toEndOf="@+id/origin" />
+        android:layout_toRightOf="@+id/address" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/originReplyButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="wrap_content"
-        app:icon="@drawable/ic_baseline_reply_24"
         android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/optionsButton"
+        android:layout_toLeftOf="@id/optionsButton"
         android:gravity="center"
-        android:id="@+id/replyButton"
-        android:layout_toRightOf="@id/dateTextView"
-        android:layout_toEndOf="@id/dateTextView" />
+        app:icon="@drawable/ic_baseline_reply_24" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/optionsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/optionsButton"
-        android:layout_toRightOf="@id/replyButton"
-        android:layout_toEndOf="@id/replyButton" />
-
+        android:layout_alignParentRight="true" />
 
 
 </RelativeLayout>
