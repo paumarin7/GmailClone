@@ -56,10 +56,8 @@
     </style>
 
     <style name="email_header" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:layout_marginTop">20dp</item>
-        <item name="android:layout_marginLeft">20dp</item>
         <item name="android:textColor">@color/unreadColor</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="email_bottom">
@@ -107,6 +105,7 @@
         <item name="android:textColor">@color/readColor</item>
         <item name="android:textSize">14sp</item>
         <item name="android:layout_margin">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
     </style>
 
     <style name="send_email_input">
@@ -114,6 +113,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:textColorHint">@color/readColor</item>
+        <item name="android:layout_marginLeft">20dp</item>
     </style>
 
 </resources>

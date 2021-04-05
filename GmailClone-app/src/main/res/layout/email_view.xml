@@ -45,11 +45,20 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <include
-        android:id="@+id/email_header"
-        layout="@layout/email_header"
+        android:id="@+id/email_subject"
+        layout="@layout/email_subject"
+        android:layout_below="@+id/wot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/wot"
+        android:background="@color/background" />
+
+    <include
+        android:id="@+id/email_origin"
+        app:menu="@menu/email_origin_menu"
+        app:navigationIcon="@drawable/ic_baseline_account_circle_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email_subject"
         android:background="@color/background" />
 
     <include
@@ -58,7 +67,7 @@
         layout="@layout/email_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/email_header"
+        android:layout_below="@+id/email_origin"
         android:background="@color/background" />
 
     <include
