@@ -12,9 +12,9 @@
         <item name="colorNavigationItemSelected">@color/selectedColor</item>
         <item name="colorNavigationItemBackgroundSelected">@color/don_juan</item>
         <item name="colorNavigationItemBackgroundPressed">@color/readColor</item>
-        <item name="drawableNavigationItemBackground">@drawable/menu_item_background_color_state</item>
+        <item name="drawableNavigationItemBackground">@drawable/menu_item_background_color_state
+        </item>
         <item name="android:listDivider">@color/unreadColor</item>
-
 
 
     </style>
@@ -27,13 +27,13 @@
         <item name="itemBackground">?attr/drawableNavigationItemBackground</item>
         <item name="android:background">@color/background</item>
     </style>
+
     <style name="TextAppearance.Custom.Navigation.Item" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/unreadColor</item>
         <item name="android:fontFamily">@font/google_sans_medium</item>
         <item name="android:textSize">14dp</item>
 
     </style>
-
 
 
     <!-- OTHER STUFF -->
@@ -92,6 +92,7 @@
         <item name="subtitleTextColor">@color/material_on_primary_emphasis_medium</item>
         <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Toolbar.Primary</item>
     </style>
+
     <style name="white">
         <item name="android:textColor">@color/white</item>
         <item name="color">@color/white</item>
@@ -100,6 +101,19 @@
         <item name="tint">@color/white</item>
         <item name="hintTextColor">@color/white</item>
         <item name="itemTextColor">@color/white</item>
+    </style>
+
+    <style name="send_email_interface">
+        <item name="android:textColor">@color/readColor</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <style name="send_email_input">
+        <item name="android:textColor">@color/unreadColor</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textColorHint">@color/readColor</item>
     </style>
 
 </resources>

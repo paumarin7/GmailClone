@@ -41,4 +41,9 @@
     <string name="snooze">Snooze</string>
     <string name="move_to">Move to</string>
     <string name="delete">Delete</string>
+    <string name="take_me_to_gmail">Take Me To Gmail</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="subject">Subject</string>
+    <string name="compose_email">Compose email</string>
 </resources>

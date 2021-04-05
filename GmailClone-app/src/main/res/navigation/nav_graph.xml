@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/recyclerView_email"
         android:name="cat.itb.gmailclone.Fragments.MainFragment"
-        android:label="RecyclerView_email" >
+        android:label="RecyclerView_email">
         <action
             android:id="@+id/action_recyclerView_email_to_emailFragment"
             app:destination="@id/emailFragment" />
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/emailFragment"
         android:name="cat.itb.gmailclone.Fragments.EmailFragment"
-        android:label="EmailFragment" >
+        android:label="EmailFragment">
         <action
             android:id="@+id/action_emailFragment_to_recyclerView_email"
             app:destination="@id/recyclerView_email"
@@ -26,22 +26,22 @@
     </fragment>
     <fragment
         android:id="@+id/new_in_Gmail_Fragment"
-        android:name="cat.itb.gmailclone.Fragments.New_in_Gmail_Fragment"
-        android:label="New_in_Gmail_Fragment" >
+        android:name="cat.itb.gmailclone.Fragments.NewInGmailFragment"
+        android:label="New_in_Gmail_Fragment">
         <action
             android:id="@+id/action_new_in_Gmail_Fragment_to_add_init_email_Fragment2"
             app:destination="@id/add_init_email_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/add_init_email_Fragment"
-        android:name="cat.itb.gmailclone.Fragments.Add_init_email_Fragment"
-        android:label="Add_init_email_Fragment" >
+        android:name="cat.itb.gmailclone.Fragments.AddAccountFragment"
+        android:label="Add_init_email_Fragment">
         <action
             android:id="@+id/action_add_init_email_Fragment_to_recyclerView_email"
             app:destination="@id/recyclerView_email" />
     </fragment>
     <fragment
         android:id="@+id/send_email_Fragment"
-        android:name="cat.itb.gmailclone.Fragments.Send_email_Fragment"
+        android:name="cat.itb.gmailclone.Fragments.SendEmailFragment"
         android:label="Send_email_Fragment" />
 </navigation>

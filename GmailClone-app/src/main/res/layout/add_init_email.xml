@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/add_init_email_Address"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <ImageView
@@ -16,43 +16,42 @@
         android:id="@+id/learnMore1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:backgroundTint="#2196F3"
         android:layout_marginTop="189dp"
-        android:textAlignment="textStart"
+        android:backgroundTint="#2196F3"
         android:text="You can now add all your email addresses"
-        />
+        android:textAlignment="textStart" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/learnMore2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:textColor="#2C43C6"
-        android:backgroundTint="#2196F3"
         android:layout_marginTop="215dp"
-        android:textAlignment="textStart"
+        android:backgroundTint="#2196F3"
         android:text="Learn more"
-        />
+        android:textAlignment="textStart"
+        android:textColor="#2C43C6" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/learnMore2"
         android:backgroundTint="@android:color/transparent"
         android:drawableLeft="@drawable/ic_baseline_add_24"
-        android:textColor="@color/cacaAzul"
-        android:textAlignment="textStart"
         android:text="Add An Email Address"
-        android:textSize="17dp"
+        android:textAlignment="textStart"
         android:textAllCaps="false"
-        android:layout_below="@+id/learnMore2"
-        />
+        android:textColor="@color/cacaAzul"
+        android:textSize="17dp" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/takeMeToGmail"
         android:layout_width="match_parent"
         android:layout_height="69dp"
         android:layout_alignParentBottom="true"
-        android:text="Take Me To Gmail"
-        app:backgroundTint="#EFEFEF"
+        android:text="@string/take_me_to_gmail"
         android:textColor="@color/background"
+        app:backgroundTint="#EFEFEF"
 
         />
 

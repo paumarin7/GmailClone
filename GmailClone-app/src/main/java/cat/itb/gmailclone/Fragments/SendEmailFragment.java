@@ -3,7 +3,6 @@ package cat.itb.gmailclone.Fragments;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,10 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -47,36 +44,27 @@ import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.Model.User;
 import cat.itb.gmailclone.R;
 
-
 import static android.content.ContentValues.TAG;
-
-
-
-
 import static cat.itb.gmailclone.Resources.GetAccountEmails.getAccount;
 
 
-public class Send_email_Fragment extends Fragment {
-        Spinner spinnerEmails;
-        ImageButton send;
-        TextInputEditText to;
-        TextInputEditText title;
-        TextInputEditText body;
-     boolean changed= false;
-
-    private   FirebaseUser user;
+public class SendEmailFragment extends Fragment {
     public static FirebaseAuth mAuth;
-
-    private GoogleSignInClient mGoogleSignInClient;
-
+    Spinner spinnerEmails;
+    ImageButton send;
+    TextInputEditText to;
+    TextInputEditText subject;
+    TextInputEditText body;
+    boolean changed = false;
     DatabaseReference imgref;
+    private FirebaseUser user;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createRequest();
     }
-
 
 
     @Nullable
@@ -89,12 +77,9 @@ public class Send_email_Fragment extends Fragment {
 
         spinnerEmails = v.findViewById(R.id.spinner_Emails);
         send = v.findViewById(R.id.enviarEmail);
-        to = v.findViewById(R.id.originNewEmail);
-        title = v.findViewById(R.id.titleNewEmail);
-        body = v.findViewById(R.id.bodyNewEmail);
-
-
-
+        to = v.findViewById(R.id.toEditText);
+        subject = v.findViewById(R.id.subjectEditText);
+        body = v.findViewById(R.id.composeEmailBody);
 
 
         final AccountManager accountManager = AccountManager.get(getContext());
@@ -107,7 +92,6 @@ public class Send_email_Fragment extends Fragment {
         }
 
 
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_dropdown_item, items);
 
@@ -115,12 +99,10 @@ public class Send_email_Fragment extends Fragment {
         spinnerEmails.setAdapter(adapter);
 
 
-
-
         spinnerEmails.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (changed = true){
+                if (changed = true) {
                     DatabaseReference firebaseRef = imgref.getDatabase().getReference("users");
                     Query f = firebaseRef.orderByChild("email").equalTo(items[position]);
                     f.addValueEventListener(new ValueEventListener() {
@@ -132,11 +114,12 @@ public class Send_email_Fragment extends Fragment {
                             }
                             firebaseAuthWithGoogle(u.getUid());
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
-                    changed= true;
+                    changed = true;
                 }
 
             }
@@ -152,14 +135,14 @@ public class Send_email_Fragment extends Fragment {
             public void onClick(View v) {
                 String key = imgref.push().getKey();
                 Date currentTime = Calendar.getInstance().getTime();
-                Toast.makeText(getContext(), spinnerEmails.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
-                Toast.makeText(getContext(), user.getPhotoUrl()+"",Toast.LENGTH_LONG).show();
-                Email m = new Email(user.getPhotoUrl().toString(),user.getDisplayName(),to.getText().toString(),title.getText().toString(), body.getText().toString(), currentTime,false,false);
+                Toast.makeText(getContext(), spinnerEmails.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), user.getPhotoUrl() + "", Toast.LENGTH_LONG).show();
+                Email m = new Email(user.getPhotoUrl().toString(), user.getDisplayName(), to.getText().toString(), subject.getText().toString(), body.getText().toString(), currentTime, false, false);
                 imgref.child("emails").child(key).setValue(m);
                 Navigation.findNavController(getActivity(), R.id.send_email_layout).navigate(R.id.recyclerView_email);
             }
         });
-        return  v;
+        return v;
     }
 
 
@@ -183,7 +166,7 @@ public class Send_email_Fragment extends Fragment {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             user = mAuth.getCurrentUser();
-                    //        Navigation.findNavController(getActivity(), R.id.send_email_layout).navigate(R.id.send_email_Fragment);
+                            //        Navigation.findNavController(getActivity(), R.id.send_email_layout).navigate(R.id.send_email_Fragment);
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -193,11 +176,6 @@ public class Send_email_Fragment extends Fragment {
                     }
                 });
     }
-
-
-
-
-
 
 
 }

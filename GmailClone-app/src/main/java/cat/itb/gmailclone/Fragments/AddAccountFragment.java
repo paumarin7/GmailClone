@@ -3,7 +3,6 @@ package cat.itb.gmailclone.Fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,15 +14,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,11 +34,13 @@ import cat.itb.gmailclone.R;
 import static android.content.ContentValues.TAG;
 import static cat.itb.gmailclone.Fragments.MainFragment.myRef;
 
-public class Add_init_email_Fragment extends Fragment {
+public class AddAccountFragment extends Fragment {
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
     private Button signIn;
     private GoogleSignInClient mGoogleSignInClient;
+
+    private MaterialButton takeMeToGmail;
 
 
     @Override
@@ -52,27 +52,32 @@ public class Add_init_email_Fragment extends Fragment {
     }
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.add_init_email, container, false);
         signIn = v.findViewById(R.id.addEmailAddress);
-          mAuth = FirebaseAuth.getInstance();
+        takeMeToGmail = v.findViewById(R.id.takeMeToGmail);
+        mAuth = FirebaseAuth.getInstance();
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     signIn();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        takeMeToGmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
         return v;
     }
-
 
 
     private void createRequest() {
@@ -84,6 +89,7 @@ public class Add_init_email_Fragment extends Fragment {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(getContext(), gso);
     }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
