@@ -40,7 +40,9 @@ public class Add_init_email_Fragment extends Fragment {
     private static final int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
     private Button signIn;
+    private Button takeMeToGmail;
     private GoogleSignInClient mGoogleSignInClient;
+
 
 
     @Override
@@ -58,7 +60,8 @@ public class Add_init_email_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.add_init_email, container, false);
         signIn = v.findViewById(R.id.addEmailAddress);
-          mAuth = FirebaseAuth.getInstance();
+        takeMeToGmail = v.findViewById(R.id.takeMeToGmail);
+        mAuth = FirebaseAuth.getInstance();
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +70,14 @@ public class Add_init_email_Fragment extends Fragment {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+            }
+        });
+
+takeMeToGmail.setEnabled(false);
+        takeMeToGmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.recyclerView_email);
             }
         });
 
@@ -128,7 +139,7 @@ public class Add_init_email_Fragment extends Fragment {
                             FirebaseUser user = mAuth.getCurrentUser();
                             User u = new User(idToken, user.getEmail());
                             myRef.child("users").child(user.getUid()).setValue(u);
-
+                            takeMeToGmail.setEnabled(true);
                             Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.recyclerView_email);
 
                         } else {
