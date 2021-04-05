@@ -46,4 +46,6 @@
     <string name="to">To</string>
     <string name="subject">Subject</string>
     <string name="compose_email">Compose email</string>
+    <string name="new_meeting">New meeting</string>
+    <string name="join_a_meeting">Join a meeting</string>
 </resources>

@@ -8,7 +8,7 @@
     android:background="@color/background">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
+        android:id="@+id/sendEmailToolbar"
         style="@style/Widget.Toolbar.Custom"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -77,15 +77,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/subjectEditText"
         android:hint="@string/compose_email" />
-
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/enviarEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_baseline_send_24" />
 
 </RelativeLayout>

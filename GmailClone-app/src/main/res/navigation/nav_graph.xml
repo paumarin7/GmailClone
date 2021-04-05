@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/new_in_Gmail_Fragment">
+    app:startDestination="@id/sendEmailFragment">
 
     <fragment
-        android:id="@+id/recyclerView_email"
+        android:id="@+id/mainFragmentRecyclerView"
         android:name="cat.itb.gmailclone.Fragments.MainFragment"
         android:label="RecyclerView_email">
         <action
@@ -13,7 +13,10 @@
             app:destination="@id/emailFragment" />
         <action
             android:id="@+id/action_recyclerView_email_to_send_email_Fragment"
-            app:destination="@id/send_email_Fragment" />
+            app:destination="@id/sendEmailFragment" />
+        <action
+            android:id="@+id/action_recyclerView_email_to_meetFragment"
+            app:destination="@id/meetFragment" />
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
@@ -21,7 +24,7 @@
         android:label="EmailFragment">
         <action
             android:id="@+id/action_emailFragment_to_recyclerView_email"
-            app:destination="@id/recyclerView_email"
+            app:destination="@id/mainFragmentRecyclerView"
             app:enterAnim="@anim/nav_default_pop_enter_anim" />
     </fragment>
     <fragment
@@ -38,10 +41,18 @@
         android:label="Add_init_email_Fragment">
         <action
             android:id="@+id/action_add_init_email_Fragment_to_recyclerView_email"
-            app:destination="@id/recyclerView_email" />
+            app:destination="@id/mainFragmentRecyclerView" />
     </fragment>
     <fragment
-        android:id="@+id/send_email_Fragment"
+        android:id="@+id/sendEmailFragment"
         android:name="cat.itb.gmailclone.Fragments.SendEmailFragment"
         android:label="Send_email_Fragment" />
+    <fragment
+        android:id="@+id/meetFragment"
+        android:name="cat.itb.gmailclone.Fragments.MeetFragment"
+        android:label="MeetFragment" >
+        <action
+            android:id="@+id/action_meetFragment_to_recyclerView_email"
+            app:destination="@id/mainFragmentRecyclerView" />
+    </fragment>
 </navigation>

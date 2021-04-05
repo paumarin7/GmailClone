@@ -10,12 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -24,6 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -51,7 +53,6 @@ import static cat.itb.gmailclone.Resources.GetAccountEmails.getAccount;
 public class SendEmailFragment extends Fragment {
     public static FirebaseAuth mAuth;
     Spinner spinnerEmails;
-    ImageButton send;
     TextInputEditText to;
     TextInputEditText subject;
     TextInputEditText body;
@@ -59,6 +60,9 @@ public class SendEmailFragment extends Fragment {
     DatabaseReference imgref;
     private FirebaseUser user;
     private GoogleSignInClient mGoogleSignInClient;
+
+    MaterialToolbar toolbar;
+    ActionMenuItemView sendButton;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,11 +80,20 @@ public class SendEmailFragment extends Fragment {
         user = mAuth.getCurrentUser();
 
         spinnerEmails = v.findViewById(R.id.spinner_Emails);
-        send = v.findViewById(R.id.enviarEmail);
         to = v.findViewById(R.id.toEditText);
         subject = v.findViewById(R.id.subjectEditText);
         body = v.findViewById(R.id.composeEmailBody);
 
+        sendButton = v.findViewById(R.id.send);
+        toolbar = v.findViewById(R.id.sendEmailToolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.sendEmailFragment).navigate(R.id.recyclerview);
+            }
+        });
 
         final AccountManager accountManager = AccountManager.get(getContext());
 
@@ -130,7 +143,7 @@ public class SendEmailFragment extends Fragment {
             }
         });
 
-        send.setOnClickListener(new View.OnClickListener() {
+        sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String key = imgref.push().getKey();
@@ -139,7 +152,7 @@ public class SendEmailFragment extends Fragment {
                 Toast.makeText(getContext(), user.getPhotoUrl() + "", Toast.LENGTH_LONG).show();
                 Email m = new Email(user.getPhotoUrl().toString(), user.getDisplayName(), to.getText().toString(), subject.getText().toString(), body.getText().toString(), currentTime, false, false);
                 imgref.child("emails").child(key).setValue(m);
-                Navigation.findNavController(getActivity(), R.id.send_email_layout).navigate(R.id.recyclerView_email);
+                Navigation.findNavController(getActivity(), R.id.send_email_layout).navigate(R.id.mainFragmentRecyclerView);
             }
         });
         return v;

@@ -12,7 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.navigation.Navigation;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
@@ -20,6 +22,8 @@ import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
 
 public class EmailFragment extends Fragment {
+
+    MaterialToolbar toolbar;
 
     TextView subjectTextView;
     MaterialButton inboxLabel;
@@ -38,6 +42,10 @@ public class EmailFragment extends Fragment {
     MaterialButton replyButton;
     MaterialButton replyAllButton;
     MaterialButton forwardButton;
+
+    MaterialButton archiveButton;
+    MaterialButton deleteButton;
+    MaterialButton markAsUnreadButton;
 
 
     @Override
@@ -74,6 +82,14 @@ public class EmailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.email_view, container, false);
 
+        toolbar = v.findViewById(R.id.emailToolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.emailFragment).navigate(R.id.recyclerview);
+            }
+        });
+
         subjectTextView = v.findViewById(R.id.subjectTextView);
         bodyTextView = v.findViewById(R.id.bodyTextView);
         inboxLabel = v.findViewById(R.id.inboxLabel);
@@ -88,6 +104,10 @@ public class EmailFragment extends Fragment {
         replyButton = v.findViewById(R.id.replyButton);
         replyAllButton = v.findViewById(R.id.replyAllButton);
         forwardButton = v.findViewById(R.id.forwardButton);
+
+        archiveButton = v.findViewById(R.id.archive);
+        deleteButton = v.findViewById(R.id.delete);
+        markAsUnreadButton = v.findViewById(R.id.markAsUnread);
 
         return v;
     }

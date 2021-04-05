@@ -43,7 +43,7 @@ public class NewInGmailFragment extends Fragment {
         FirebaseUser currentUser = mAuth.getCurrentUser();
 //        Toast.makeText(getContext(), currentUser.getEmail()+"", Toast.LENGTH_LONG).show();
         if (currentUser != null) {
-            Navigation.findNavController(getActivity(), R.id.new_in_gmail).navigate(R.id.recyclerView_email);
+            Navigation.findNavController(getActivity(), R.id.new_in_gmail).navigate(R.id.mainFragmentRecyclerView);
         }
     }
 }

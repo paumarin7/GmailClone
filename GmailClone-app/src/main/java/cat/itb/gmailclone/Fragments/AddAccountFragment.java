@@ -69,10 +69,11 @@ public class AddAccountFragment extends Fragment {
                 }
             }
         });
+        takeMeToGmail.setEnabled(true);
         takeMeToGmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.mainFragmentRecyclerView);
             }
         });
 
@@ -135,7 +136,7 @@ public class AddAccountFragment extends Fragment {
                             User u = new User(idToken, user.getEmail());
                             myRef.child("users").child(user.getUid()).setValue(u);
 
-                            Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.recyclerView_email);
+                            Navigation.findNavController(getActivity(), R.id.add_init_email_Address).navigate(R.id.mainFragmentRecyclerView);
 
                         } else {
                             // If sign in fails, display a message to the user.
