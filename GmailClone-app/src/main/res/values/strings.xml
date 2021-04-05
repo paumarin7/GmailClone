@@ -30,4 +30,15 @@
     <string name="forward">Forward</string>
     <string name="back">Back</string>
     <string name="mark_as_unread">Mark as unread</string>
+    <string name="archive">Archive</string>
+    <string name="add_to_tasks">Add to Tasks</string>
+    <string name="report_spam">Report spam</string>
+    <string name="print">Print</string>
+    <string name="view_in_light_theme">View in light theme</string>
+    <string name="mute">Mute</string>
+    <string name="change_labels">Change labels</string>
+    <string name="mark_as_important">Mark as important</string>
+    <string name="snooze">Snooze</string>
+    <string name="move_to">Move to</string>
+    <string name="delete">Delete</string>
 </resources>

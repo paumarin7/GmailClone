@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:icon="@drawable/ic_baseline_reply_24"
+        android:text="@string/reply"
+        android:id="@+id/replyButton"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/reply_all"
+        app:icon="@drawable/ic_baseline_reply_all_24"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:id="@+id/replyAllButton"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/forward"
+        app:icon="@drawable/ic_baseline_arrow_forward_24"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:id="@+id/forwardButton"
+        />
+
+</LinearLayout>

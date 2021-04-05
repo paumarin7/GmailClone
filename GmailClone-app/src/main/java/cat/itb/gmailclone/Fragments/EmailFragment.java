@@ -28,11 +28,16 @@ public class EmailFragment extends Fragment {
     ImageView originProfilePicture;
     TextView originTextView;
     TextView dateTextView;
-    Button replyButton;
+    MaterialButton originReplyButton;
     Button optionsButton;
 
     TextView bodyTextView;
 
+    View.OnClickListener replyButtonListener;
+
+    MaterialButton replyButton;
+    MaterialButton replyAllButton;
+    MaterialButton forwardButton;
 
 
 
@@ -53,12 +58,14 @@ public class EmailFragment extends Fragment {
                 } else {
                     favCheckBox.setChecked(false);
                 }
-                bodyTextView.setText(email.getBody());
 
+                originProfilePicture.setImageResource(email.getImage());
                 originTextView.setText(email.getOrigin());
                 dateTextView.setText(String.valueOf(email.getDate()));
+                //originReplyButton.setOnClickListener(replyButtonListener);
 
 
+                bodyTextView.setText(email.getBody());
 
             }
         });
@@ -75,12 +82,14 @@ public class EmailFragment extends Fragment {
         favCheckBox = v.findViewById(R.id.favCheckBox);
 
         originProfilePicture = v.findViewById(R.id.originProfilePicture);
-        originTextView = v.findViewById(R.id.originTextView);
+        originTextView = v.findViewById(R.id.address);
         dateTextView = v.findViewById(R.id.dateTextView);
-        replyButton = v.findViewById(R.id.replyButton);
+        originReplyButton = v.findViewById(R.id.replyButton);
         optionsButton = v.findViewById(R.id.optionsButton);
 
-
+        replyButton = v.findViewById(R.id.replyButton);
+        replyAllButton = v.findViewById(R.id.replyAllButton);
+        forwardButton = v.findViewById(R.id.forwardButton);
 
         return v;
     }
