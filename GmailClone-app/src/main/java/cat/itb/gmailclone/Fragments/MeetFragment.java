@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -22,11 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.firebase.ui.database.ObservableSnapshotArray;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -35,7 +30,6 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,8 +43,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import cat.itb.gmailclone.Fragments.RecyclerView.EmailAdapter;
-import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.Model.User;
 import cat.itb.gmailclone.R;
 import cat.itb.gmailclone.Resources.CircleTransformation;
@@ -59,31 +51,26 @@ import static android.content.ContentValues.TAG;
 import static cat.itb.gmailclone.Resources.GetAccountEmails.getAccount;
 
 
-public class MainFragment extends Fragment {
+public class MeetFragment extends Fragment {
+
     private static final int RC_SIGN_IN = 123;
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
     public static DatabaseReference myRef = database.getReference();
     public static FirebaseUser user;
     public static FirebaseAuth mAuth;
-    RecyclerView recyclerView;
     DrawerLayout drawer;
     ImageButton profileIcon;
-    EmailAdapter adapter;
-    FloatingActionButton writeEmail;
     boolean in = false;
-    private Button signIn;
     private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        createRequest();
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        adapter.startListening();
 
     }
 
@@ -92,48 +79,6 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.main_fragment, container, false);
-
-
-        //FireBase
-
-        mAuth = FirebaseAuth.getInstance();
-
-        user = mAuth.getCurrentUser();
-
-        Query filter = database.getReference().child("emails").orderByChild("to").equalTo(user.getEmail());
-
-        final FirebaseRecyclerOptions<Email> options = new FirebaseRecyclerOptions.Builder<Email>().setQuery(filter, Email.class).build();
-
-
-        //Ir a escribir email
-        writeEmail = v.findViewById(R.id.writeEmail);
-        writeEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.sendEmailFragment);
-            }
-        });
-
-
-        //RecyclerView
-        recyclerView = v.findViewById(R.id.recyclerview);
-        adapter = new EmailAdapter(options);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        mLayoutManager.setReverseLayout(true);
-        recyclerView.setLayoutManager(mLayoutManager);
-        adapter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle b = new Bundle();
-                ObservableSnapshotArray<Email> mSnapshots = options.getSnapshots();
-                Email e = mSnapshots.get(recyclerView.getChildAdapterPosition(v));
-                b.putSerializable("email", e);
-                getParentFragmentManager().setFragmentResult("email", b);
-                Navigation.findNavController(getActivity(), R.id.recyclerview).navigate(R.id.emailFragment);
-            }
-        });
-        recyclerView.setAdapter(adapter);
-
 
         //TopAppBar
         Toolbar toolbar = v.findViewById(R.id.topAppBar);
