@@ -91,7 +91,7 @@ public class SendEmailFragment extends Fragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.sendEmailFragment).navigate(R.id.recyclerview);
+                Navigation.findNavController(getActivity(), R.id.send_email_layout).navigate(R.id.mainFragmentRecyclerView);
             }
         });
 
@@ -110,8 +110,6 @@ public class SendEmailFragment extends Fragment {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerEmails.setAdapter(adapter);
-
-
         spinnerEmails.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

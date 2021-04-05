@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.navigation.Navigation;
@@ -43,9 +44,9 @@ public class EmailFragment extends Fragment {
     MaterialButton replyAllButton;
     MaterialButton forwardButton;
 
-    MaterialButton archiveButton;
-    MaterialButton deleteButton;
-    MaterialButton markAsUnreadButton;
+    ActionMenuItemView archiveButton;
+    ActionMenuItemView deleteButton;
+    ActionMenuItemView markAsUnreadButton;
 
 
     @Override
@@ -86,7 +87,7 @@ public class EmailFragment extends Fragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.emailFragment).navigate(R.id.recyclerview);
+                Navigation.findNavController(getActivity(), R.id.email_view).navigate(R.id.mainFragmentRecyclerView);
             }
         });
 
