@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
 
     >
 
@@ -8,7 +7,9 @@
 
     </group>
 
-    <item android:title="@string/all_labels" android:id="@+id/all_labels">
+    <item
+        android:id="@+id/all_labels"
+        android:title="@string/all_labels">
         <menu>
             <item
                 android:id="@+id/all_inboxes"
@@ -46,7 +47,9 @@
         </menu>
     </item>
 
-    <item android:title="@string/google_apps" android:id="@+id/google_apps">
+    <item
+        android:id="@+id/google_apps"
+        android:title="@string/google_apps">
         <menu>
             <item
                 android:id="@+id/calendar"

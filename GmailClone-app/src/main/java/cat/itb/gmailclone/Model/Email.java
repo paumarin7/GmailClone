@@ -1,7 +1,5 @@
 package cat.itb.gmailclone.Model;
 
-import android.net.Uri;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -16,7 +14,7 @@ public class Email implements Serializable {
     boolean read;
 
 
-    public Email(String photoUrl, String origin, String to, String title, String body, Date date, boolean favorite, boolean read ) {
+    public Email(String photoUrl, String origin, String to, String title, String body, Date date, boolean favorite, boolean read) {
         this.photoUrl = photoUrl;
         this.origin = origin;
         this.to = to;
@@ -27,9 +25,8 @@ public class Email implements Serializable {
         this.read = read;
     }
 
-    public Email(){}
-
-
+    public Email() {
+    }
 
 
     public String getTo() {

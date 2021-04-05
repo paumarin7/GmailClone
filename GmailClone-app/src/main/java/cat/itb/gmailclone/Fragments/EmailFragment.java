@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentResultListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
-import cat.itb.gmailclone.Model.*;
+import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
 
 public class EmailFragment extends Fragment {
@@ -40,7 +40,6 @@ public class EmailFragment extends Fragment {
     MaterialButton forwardButton;
 
 
-
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +51,13 @@ public class EmailFragment extends Fragment {
                 Email email = (Email) result.getSerializable("email");
 
                 subjectTextView.setText(email.getTitle());
-            //    inboxLabel.setText(email.getInboxes().toString());
+                //    inboxLabel.setText(email.getInboxes().toString());
                 if (email.isFavorite()) {
                     favCheckBox.setChecked(true);
                 } else {
                     favCheckBox.setChecked(false);
                 }
 
-                originProfilePicture.setImageResource(email.getImage());
                 originTextView.setText(email.getOrigin());
                 dateTextView.setText(String.valueOf(email.getDate()));
                 //originReplyButton.setOnClickListener(replyButtonListener);
