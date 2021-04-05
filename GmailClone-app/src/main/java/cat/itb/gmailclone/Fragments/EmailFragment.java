@@ -52,7 +52,7 @@ public class EmailFragment extends Fragment {
                 Email email = (Email) result.getSerializable("email");
 
                 subjectTextView.setText(email.getTitle());
-                inboxLabel.setText(email.getInboxes().toString());
+            //    inboxLabel.setText(email.getInboxes().toString());
                 if (email.isFavorite()) {
                     favCheckBox.setChecked(true);
                 } else {

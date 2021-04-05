@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/recyclerView_email">
+    app:startDestination="@id/new_in_Gmail_Fragment">
 
     <fragment
         android:id="@+id/recyclerView_email"
@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_recyclerView_email_to_emailFragment"
             app:destination="@id/emailFragment" />
+        <action
+            android:id="@+id/action_recyclerView_email_to_send_email_Fragment"
+            app:destination="@id/send_email_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/emailFragment"
@@ -37,4 +40,8 @@
             android:id="@+id/action_add_init_email_Fragment_to_recyclerView_email"
             app:destination="@id/recyclerView_email" />
     </fragment>
+    <fragment
+        android:id="@+id/send_email_Fragment"
+        android:name="cat.itb.gmailclone.Fragments.Send_email_Fragment"
+        android:label="Send_email_Fragment" />
 </navigation>

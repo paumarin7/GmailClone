@@ -1,5 +1,6 @@
 package cat.itb.gmailclone;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -12,6 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static Context contextOfApplication;
 
 
     @Override
@@ -38,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
+    public static Context getContextOfApplication() {
+        return contextOfApplication;
+    }
 }
