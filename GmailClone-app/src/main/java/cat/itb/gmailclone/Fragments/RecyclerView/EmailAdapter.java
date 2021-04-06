@@ -122,7 +122,14 @@ public class EmailAdapter extends FirebaseRecyclerAdapter<Email, EmailAdapter.Em
             }
             dateItem.setText(date);
 
-            starItem.setEnabled(email.isFavorite());
+            starItem.setEnabled(true);
+            starItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    email.setFavorite(starItem.isChecked());
+                    notifyData();
+                }
+            });
 
             if (email.isRead()) {
                 originItem.setTextColor(Color.GRAY);

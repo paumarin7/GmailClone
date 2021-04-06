@@ -1,5 +1,7 @@
 package cat.itb.gmailclone.Fragments;
 
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
@@ -18,6 +21,10 @@ import androidx.navigation.Navigation;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import cat.itb.gmailclone.Model.Email;
 import cat.itb.gmailclone.R;
@@ -54,6 +61,7 @@ public class EmailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         getParentFragmentManager().setFragmentResultListener("email", this, new FragmentResultListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
 
@@ -68,7 +76,20 @@ public class EmailFragment extends Fragment {
                 }
 
                 originTextView.setText(email.getOrigin());
-                dateTextView.setText(String.valueOf(email.getDate()));
+
+
+                Date mailDate = email.getDate();
+                String date;
+                SimpleDateFormat today = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                SimpleDateFormat notToday = new SimpleDateFormat("dd MMM", Locale.getDefault());
+                SimpleDateFormat compareDay = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+                if (compareDay.format(mailDate).equals(compareDay.format(Calendar.getInstance().getTime()))) {
+                    date = today.format(mailDate);
+
+                } else {
+                    date = notToday.format(mailDate);
+                }
+                dateTextView.setText(date);
                 //originReplyButton.setOnClickListener(replyButtonListener);
 
 

@@ -49,4 +49,5 @@
     <string name="new_meeting">New meeting</string>
     <string name="join_a_meeting">Join a meeting</string>
     <string name="authid" translatable="false">269752629440-k3n1048kgg80jqsd9r4qh6nlcaue5jks.apps.googleusercontent.com</string>
+    <string name="email_origin">email_origin</string>
 </resources>

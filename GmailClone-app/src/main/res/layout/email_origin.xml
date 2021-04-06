@@ -13,21 +13,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp" />
 
-    <TextView
-        android:id="@+id/address"
-        style="@style/email_origin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/originProfilePicture"
-        android:layout_toRightOf="@+id/originProfilePicture" />
 
-    <TextView
-        android:id="@+id/dateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/address"
-
-        android:layout_toRightOf="@+id/address" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/originReplyButton"
