@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/emailInitImage"
         android:layout_width="match_parent"
-        android:layout_height="202dp"
+        android:layout_height="200dp"
         android:src="@drawable/addinitemail" />
 
     <com.google.android.material.button.MaterialButton
@@ -17,19 +17,21 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="189dp"
-        android:backgroundTint="#2196F3"
-        android:text="You can now add all your email addresses"
-        android:textAlignment="textStart" />
+        android:backgroundTint="@color/cacaAzul"
+        android:text="@string/you_can_now_add_all_your_email_addresses"
+        android:textAlignment="textStart"
+        android:gravity="start" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/learnMore2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="215dp"
-        android:backgroundTint="#2196F3"
-        android:text="Learn more"
+        android:backgroundTint="@color/cacaAzul"
+        android:text="@string/learn_more"
         android:textAlignment="textStart"
-        android:textColor="#2C43C6" />
+        android:textColor="#2C43C6"
+        android:gravity="start" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addEmailAddress"
@@ -38,11 +40,12 @@
         android:layout_below="@+id/learnMore2"
         android:backgroundTint="@android:color/transparent"
         android:drawableLeft="@drawable/ic_baseline_add_24"
-        android:text="Add An Email Address"
+        android:text="@string/add_an_email_address"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/cacaAzul"
-        android:textSize="17dp" />
+        android:textSize="17sp"
+        android:gravity="start" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/takeMeToGmail"

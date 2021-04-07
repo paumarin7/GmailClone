@@ -16,32 +16,32 @@
 
     <item
         android:id="@+id/schedule_send"
-        android:title="@string/mark_as_unread"
+        android:title="@string/schedule_send"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/add_from_contacts"
-        android:title="@string/move_to"
+        android:title="@string/add_from_contacts"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/confidential_mode"
-        android:title="@string/snooze"
+        android:title="@string/condifential_mode"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/save_draft"
-        android:title="@string/archive"
+        android:title="@string/save_draft"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/discard"
-        android:title="@string/delete"
+        android:title="@string/discard"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/settings"
-        android:title="@string/mark_as_unread"
+        android:title="@string/settings"
         app:showAsAction="never" />
 
     <item

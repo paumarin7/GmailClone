@@ -50,4 +50,13 @@
     <string name="join_a_meeting">Join a meeting</string>
     <string name="authid" translatable="false">269752629440-k3n1048kgg80jqsd9r4qh6nlcaue5jks.apps.googleusercontent.com</string>
     <string name="email_origin">email_origin</string>
+    <string name="add_star">Add star</string>
+    <string name="you_can_now_add_all_your_email_addresses">You can now add all your email addresses</string>
+    <string name="learn_more">Learn more</string>
+    <string name="add_an_email_address">Add An Email Address</string>
+    <string name="discard">Discard</string>
+    <string name="save_draft">Save draft</string>
+    <string name="condifential_mode">Condifential Mode</string>
+    <string name="add_from_contacts">Add from Contacts</string>
+    <string name="schedule_send">Schedule send</string>
 </resources>
