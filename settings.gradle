@@ -1,2 +1,2 @@
-include ':GmailClone-app'
-rootProject.name = "GmailClone"
+include ':app'
+rootProject.name = "GmailClone2"
