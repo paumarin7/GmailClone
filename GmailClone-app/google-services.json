@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "269752629440",
+    "firebase_url": "https://clone-28921-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "clone-28921",
+    "storage_bucket": "clone-28921.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269752629440:android:e11ddd787ed56419ab5525",
+        "android_client_info": {
+          "package_name": "cat.itb.gmailclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269752629440-k3n1048kgg80jqsd9r4qh6nlcaue5jks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpP-cRoJeU79VNEGR3KRL0i1UpNHJleQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269752629440-k3n1048kgg80jqsd9r4qh6nlcaue5jks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
