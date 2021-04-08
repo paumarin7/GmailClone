@@ -12,9 +12,10 @@ public class Email implements Serializable {
     Date date;
     boolean favorite;
     boolean read;
+    String inbox;
 
 
-    public Email(String photoUrl, String origin, String to, String title, String body, Date date, boolean favorite, boolean read) {
+    public Email(String photoUrl, String origin, String to, String title, String body, Date date, boolean favorite, boolean read, String inbox) {
         this.photoUrl = photoUrl;
         this.origin = origin;
         this.to = to;
@@ -23,6 +24,7 @@ public class Email implements Serializable {
         this.date = date;
         this.favorite = favorite;
         this.read = read;
+        this.inbox = inbox;
     }
 
     public Email() {
@@ -93,5 +95,11 @@ public class Email implements Serializable {
         this.read = read;
     }
 
+    public String getInbox() {
+        return inbox;
+    }
 
+    public void setInboxes(String inbox) {
+        this.inbox = inbox;
+    }
 }

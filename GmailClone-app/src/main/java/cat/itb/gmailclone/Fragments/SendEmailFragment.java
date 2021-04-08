@@ -148,7 +148,7 @@ public class SendEmailFragment extends Fragment {
                 Date currentTime = Calendar.getInstance().getTime();
                 Toast.makeText(getContext(), spinnerEmails.getSelectedItem().toString(), Toast.LENGTH_LONG).show();
                 Toast.makeText(getContext(), user.getPhotoUrl() + "", Toast.LENGTH_LONG).show();
-                Email m = new Email(user.getPhotoUrl().toString(), user.getDisplayName(), to.getText().toString(), subject.getText().toString(), body.getText().toString(), currentTime, false, false);
+                Email m = new Email(user.getPhotoUrl().toString(), user.getDisplayName(), to.getText().toString(), subject.getText().toString(), body.getText().toString(), currentTime, false, false, "Received");
                 imgref.child("emails").child(key).setValue(m);
                 Navigation.findNavController(getActivity(), R.id.send_email_layout).navigate(R.id.mainFragmentRecyclerView);
             }

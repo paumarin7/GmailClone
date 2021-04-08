@@ -117,11 +117,8 @@ public class EmailFragment extends Fragment {
         inboxLabel = v.findViewById(R.id.inboxLabel);
         favCheckBox = v.findViewById(R.id.favCheckBox);
 
-        originProfilePicture = v.findViewById(R.id.originProfilePicture);
         originTextView = v.findViewById(R.id.address);
         dateTextView = v.findViewById(R.id.dateTextView);
-        originReplyButton = v.findViewById(R.id.replyButton);
-        optionsButton = v.findViewById(R.id.optionsButton);
 
         replyButton = v.findViewById(R.id.replyButton);
         replyAllButton = v.findViewById(R.id.replyAllButton);

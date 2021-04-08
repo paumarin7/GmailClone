@@ -18,9 +18,9 @@
         android:layout_height="40dp"
         android:layout_marginTop="189dp"
         android:backgroundTint="@color/cacaAzul"
+        android:gravity="start"
         android:text="@string/you_can_now_add_all_your_email_addresses"
-        android:textAlignment="textStart"
-        android:gravity="start" />
+        android:textAlignment="textStart" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/learnMore2"
@@ -28,10 +28,10 @@
         android:layout_height="40dp"
         android:layout_marginTop="215dp"
         android:backgroundTint="@color/cacaAzul"
+        android:gravity="start"
         android:text="@string/learn_more"
         android:textAlignment="textStart"
-        android:textColor="#2C43C6"
-        android:gravity="start" />
+        android:textColor="#2C43C6" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addEmailAddress"
@@ -40,12 +40,12 @@
         android:layout_below="@+id/learnMore2"
         android:backgroundTint="@android:color/transparent"
         android:drawableLeft="@drawable/ic_baseline_add_24"
+        android:gravity="start"
         android:text="@string/add_an_email_address"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/cacaAzul"
-        android:textSize="17sp"
-        android:gravity="start" />
+        android:textSize="17sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/takeMeToGmail"
